@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.admin.dao.OrderDao">
+<!--//查询用户-->
+    <select id="listProducts" resultType="com.qf.admin.pojo.po.Order">
+        select *
+        from orderproduct
+        <where>
+            <if test="search != null and search !=''">
+                pname like '%${search}%'
+            </if>
+        </where>
+        limit #{offset},#{limit}
+    </select>
+<!--//用户数量-->
+    <select id="countProducts" resultType="_long">
+        select count(1)
+        from orderproduct
+        <where>
+            <if test="search != null and search !=''">
+                pname like '%${search}%'
+            </if>
+        </where>
+    </select>
+    <!--查询单个订单商品-->
+    <select id="getOrderPro" parameterType="java.lang.String" resultType="com.qf.admin.pojo.po.Order">
+        select * from orderproduct where uid = #{uid}
+    </select>
+    <delete id="delOrderPro" parameterType="java.lang.String">
+        delete from orderproduct where uid = #{uid}
+    </delete>
+
+    <update id="updateorder" parameterType="com.qf.admin.pojo.po.Order">
+        update orderproduct
+        <set>
+            <if test="pname != null">
+                pname=#{pname},
+            </if>
+            <if test="count != null">
+                count=#{count},
+            </if>
+            <if test="shop_price != null">
+                shop_price=#{shop_price},
+            </if>
+        </set>
+        where uid = #{uid}
+    </update>
+
+    <insert id="saveorder" parameterType="com.qf.admin.pojo.po.Order">
+        insert into orderproduct values (#{uid},#{pimage},#{pname},#{count},#{shop_price},null,null)
+        <!--<trim prefix="values(" suffix=")" suffixOverrides=",">-->
+            <!--<if test="uid != null">-->
+                <!--#{uid},-->
+            <!--</if>-->
+            <!--<if test="pimage != null">-->
+                <!--#{pimage},-->
+            <!--</if>-->
+            <!--<if test="pname != null">-->
+                <!--#{pname},-->
+            <!--</if>-->
+            <!--<if test="shop_price != null">-->
+                <!--#{shop_price},-->
+            <!--</if>-->
+            <!--<if test="count != null">-->
+                <!--#{count},-->
+            <!--</if>-->
+        <!--</trim>-->
+    </insert>
+</mapper>
