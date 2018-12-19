@@ -111,9 +111,8 @@
     <ul class="app-menu">
         <li><a class="app-menu__item" href="test1"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Test1</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="test2" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Test2</span></a>
-
         </li>
-        <li><a class="app-menu__item" href="order"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">订单表</span></a></li>
+        <li><a class="app-menu__item " href="order"><i class="app-menu__icon fa fa-pie-chart"></i><span class="app-menu__label">订单表</span></a></li>
         <li class="treeview"><a class="app-menu__item" href="test3" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Test3</span></a>
 
         </li>
