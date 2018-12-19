@@ -6,7 +6,7 @@ public class Order {
     private String pimage;
     private double shop_price;
     private int count;
-//    private double total_price;
+    //    private double total_price;
     private String pid;
 
     public String getUid() {
